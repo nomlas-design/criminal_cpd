@@ -1,0 +1,236 @@
+$white: rgb(255, 254, 253);
+$off-white: rgb(250, 250, 250);
+$white-border: rgb(236, 236, 236);
+
+$text-size: 16px;
+$text-colour: rgb(20, 20, 29);
+$text-colour-light: rgb(119, 119, 122);
+$text-colour-hover: rgb(96, 96, 112);
+
+$box-padding: 1rem;
+
+$icon-size: 1rem;
+
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Varta, sans-serif;
+  letter-spacing: 0.01rem;
+  color: $text-colour;
+  font-size: $text-size;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.sidenav {
+  background: $white;
+  height: 100%;
+  width: clamp(350px, 20vw, 500px);
+  border-right: 1px solid $white-border;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  padding: $box-padding;
+  font-size: 2rem;
+}
+
+.sidenav__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  height: 100%;
+
+  .list-title {
+    padding: $box-padding;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-bottom: 1px solid $white-border;
+  }
+
+  .list-empty {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: $box-padding;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+    border-bottom: 1px solid $white-border;
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: none;
+    width: 100%;
+  }
+
+  li {
+
+
+    a {
+      display: flex;
+      padding: $box-padding;
+      border-bottom: 1px solid $white-border;
+      gap: 0.75rem;
+      background: $white;
+
+      &:hover {
+        background: $off-white;
+      }
+    }
+
+    img {
+      height: 40px;
+    }
+  }
+
+  .search-result__content {
+    flex: 1;
+  }
+
+  .search-result__title {
+    font-weight: bold;
+  }
+
+  .search-result__details {
+    color: $text-colour-light;
+    font-size: 0.85rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      margin: 0.3rem;
+    }
+  }
+}
+
+.searchbar {
+  padding: $box-padding;
+  border: 1px solid $white-border;
+  background: $white;
+  border-right: none;
+  border-left: none;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  position: relative;
+
+  .searchbar__close {
+    width: 36px;
+    height: 36px;
+    background: $text-colour;
+    background-size: $icon-size;
+    -webkit-mask-image: url(/icons/icon_close.svg);
+    -webkit-mask-position: 0 50%;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url(/icons/icon_close.svg);
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    font-size: inherit;
+    cursor: pointer;
+    transition: 0.3s ease background;
+    transform: translateX(4px);
+
+    &:hover {
+      background: $text-colour-hover;
+    }
+  }
+
+  .searchbar__icon {
+    background: $text-colour;
+    background-size: $icon-size;
+    -webkit-mask-image: url(/icons/icon_search.svg);
+    -webkit-mask-position: 50% 50%;
+    -webkit-mask-repeat: no-repeat;
+    mask-image: url(/icons/icon_search.svg);
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    font-size: inherit;
+    width: 1.7rem;
+    height: 1.7rem;
+    margin-right: 0.2rem;
+    transition: 0.2s ease transform;
+    transition: 0.2s ease opacity;
+    transition: 0.2s ease width;
+  }
+
+  .searchbar__icon.hide {
+    transform: translateX(-0.1em);
+    opacity: 0;
+    width: 0%;
+  }
+
+  #search {
+    font-family: Varta, sans-serif;
+    outline: none;
+    border: 0px;
+    height: 100%;
+    width: 100%;
+
+
+    &:focus {
+      mask-image: none;
+      background: transparent;
+    }
+  }
+}
+
+/* Loader */
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  margin-top: $box-padding;
+
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: calc($icon-size + 0.5rem);
+    height: calc($icon-size + 0.5rem);
+    border: 2px solid;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: $text-colour-hover transparent transparent transparent;
+
+    &:nth-child(1) {
+      animation-delay: -0.45s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -0.3s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: -0.15s;
+    }
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
